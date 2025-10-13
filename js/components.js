@@ -295,11 +295,14 @@ function createModalidadDetails(modalidad) {
 
 //se cambio aquiii estadooo
 
+// js/components.js
+
+// Reemplaza la función original con esta
 function createCronogramaItem(item) {
     const isProximo = item.estado === 'proximo';
     const isPasado = item.estado === 'pasado';
     return `
-        <div class="timeline-item ${isProximo ? 'active' : ''} ${isPasado ? 'proximo' : ''}">
+        <div class="timeline-item ${isProximo ? 'active' : ''} ${isPasado ? 'pasado' : ''}">
             <div class="timeline-icon">
                 ${icons.Calendar}
             </div>
@@ -308,7 +311,7 @@ function createCronogramaItem(item) {
                 <h3 class="event">${item.evento}</h3>
             </div>
             ${isProximo ? '<div class="timeline-status proximo">Próximo</div>' : ''}
-            ${isPasado ? '<div class="timeline-status proximo">Finalizado</div>' : ''}
+            ${isPasado ? '<div class="timeline-status pasado">Finalizado</div>' : ''}
         </div>
     `;
 }

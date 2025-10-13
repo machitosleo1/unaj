@@ -152,7 +152,8 @@ document.addEventListener('DOMContentLoaded', () => {
             renderComponent(modalidadDetailsWrapper, createModalidadDetails(activeModalidad));
             modalidadDetailsWrapper.classList.add('active');
             setTimeout(() => {
-                modalidadDetailsWrapper.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                // ✅ CÓDIGO CORREGIDO
+                modalidadDetailsWrapper.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }, 100);
         } else {
             renderComponent(modalidadDetailsWrapper, '');
@@ -239,30 +240,3 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-
-/// 🎯 SOLO AGREGAR ESTE CÓDIGO
-document.addEventListener('DOMContentLoaded', () => {
-    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-    const mobileMenuCloseBtn = document.getElementById('mobile-menu-close-btn');
-    const mobileNavOverlay = document.getElementById('mobile-nav-overlay');
-
-    if (mobileMenuBtn && mobileMenuCloseBtn && mobileNavOverlay) {
-        // Abrir menú
-        mobileMenuBtn.addEventListener('click', () => {
-            mobileNavOverlay.classList.add('active');
-        });
-
-        // Cerrar menú
-        mobileMenuCloseBtn.addEventListener('click', () => {
-            mobileNavOverlay.classList.remove('active');
-        });
-
-        // Cerrar al hacer clic en enlaces
-        const mobileNavLinks = mobileNavOverlay.querySelectorAll('.mobile-nav-item a');
-        mobileNavLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                mobileNavOverlay.classList.remove('active');
-            });
-        });
-    }
-});

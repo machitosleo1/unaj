@@ -4,7 +4,7 @@
 :root {
     /* AZULES - Color Principal Institucional */
     --unaj-950: #002068;
-    --unaj-900: #0033A0;
+    --unaj-900: #0025a0;
     /* Azul Logo UNAJ ⭐ IDENTIDAD */
     --unaj-800: #0047CC;
     --unaj-700: #1E40AF;
@@ -91,6 +91,7 @@
 html {
     scroll-behavior: smooth;
     font-size: 16px;
+    scroll-padding-top: 100px; /* <-- AGREGA ESTA LÍNEA */
 }
 
 body {
@@ -160,11 +161,13 @@ body {
 }
 
 .section {
-    padding: 6rem 0;
+    padding: 4rem 0;
+    
 }
 
 .section-soft-bg {
     background-color: var(--unaj-50);
+    
 }
 
 .section-title {
@@ -194,10 +197,20 @@ body {
 
 
 .reglamento-grid{
+    background-color: var(--white);
+    border-radius: 16px;
+    box-shadow: var(--shadow-xl);
+    transition: var(--transition-slow);
+    overflow: hidden;
+    cursor: pointer;
     display: flex;
-    text-align: center;
-}
+    
+    flex-direction: row;
 
+}
+.reglamento-card{
+    margin: 10px;
+}
 /* ═══════════════════════════════════════════════════════════
    HEADER Y NAVEGACIÓN
    ═══════════════════════════════════════════════════════════ */
@@ -433,6 +446,7 @@ body {
     overflow: hidden;
     padding-top: 6rem;
     padding-bottom: 8rem;
+    
 }
 
 .hero-bg-decoration {
@@ -503,7 +517,7 @@ body {
 
 .hero-title {
     font-size: clamp(2.5rem, 5vw, 4rem);
-    font-weight: 800;
+    font-weight: 700;
     margin-bottom: 1rem;
     line-height: 1.1;
 }
@@ -702,10 +716,11 @@ body {
 }
 
 .hero-wave-separator {
+    
     position: absolute;
     bottom: -1px;
-    left: 0;
-    right: 0;
+    left: 0px;
+    right: 0px;
     width: 100%;
 }
 
@@ -1154,6 +1169,28 @@ body {
     border-radius: 999px;
     font-size: 0.85rem;
     font-weight: 500;
+}
+
+/* styles.css */
+
+/* ... estilos del timeline-status ... */
+
+.timeline-item.pasado {
+    border-color: var(--gray-300);
+    opacity: 0.8;
+}
+
+.timeline-item.pasado .timeline-icon {
+    background: linear-gradient(to bottom right, var(--gray-500), var(--gray-400));
+}
+
+.timeline-item.pasado .timeline-content .date {
+    color: var(--gray-600);
+}
+
+.timeline-status.pasado {
+    background-color: var(--gray-100);
+    color: var(--gray-600);
 }
 
 /* ═══════════════════════════════════════════════════════════
@@ -1704,15 +1741,16 @@ body {
         padding: 0.4rem 0;
     }
 
-    .top-bar-content {
-        justify-content: center;
-        gap: 1rem;
-    }
-
-    .top-bar-contact,
-    .top-bar-location {
-        gap: 10rem;
-    }
+/* ✅ CÓDIGO CORREGIDO */
+/* ✅ CÓDIGO CORREGIDO */
+.top-bar-content {
+    justify-content: space-between; /* Distribuye el espacio sobrante */
+    gap: 1rem;
+}
+.top-bar-contact,
+.top-bar-location {
+    gap: 1.5rem; /* Un espaciado razonable */
+}
 
     .top-bar-item span {
         display: none;
@@ -1755,7 +1793,7 @@ body {
 
 @media (max-width: 768px) {
     html {
-        font-size: 15px;
+        font-size: 9px;
     }
 
     .container {
@@ -1767,11 +1805,16 @@ body {
     }
 
     .hero-section {
-        padding-top: 4rem;
-        padding-bottom: 6rem;
+        padding-top: 6rem;
+        padding-bottom: 5rem;
+        padding-left: 0rem;
+    
     }
 
     .hero-actions {
+        flex-direction: column;
+    }
+    .reglamento-grid{
         flex-direction: column;
     }
 
