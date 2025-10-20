@@ -29,6 +29,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const reglamentoContainer = document.getElementById('reglamento-container');
     const popupContainer = document.getElementById('popup-container');
 
+    const welcomePopupContainer = document.getElementById('welcome-popup-container');
+    const comunicadoContainer = document.getElementById('comunicado-container');
+
+
     // --- RENDERIZADO INICIAL ---
     if (heroContainer) renderComponent(heroContainer, createHeroSection());
     if (headerContainer) renderComponent(headerContainer, createHeader());
@@ -53,10 +57,71 @@ document.addEventListener('DOMContentLoaded', () => {
     
     if (cepreContainer) renderComponent(cepreContainer, createCepreSection());
     if (reglamentoContainer) renderComponent(reglamentoContainer, createReglamentoSection());
+    if (comunicadoContainer) renderComponent(comunicadoContainer, createComunicadoSection());
+    
     
     setupHeaderLogic();
     setupCountdown();
     setupPopupLogic();
+
+    setupWelcomePopup();
+
+/**
+     * LÓGICA DEL POPUP DE BIENVENIDA (PRIMERA VISITA)
+     */
+function setupWelcomePopup() {
+    if (!welcomePopupContainer) return;
+
+    const storageKey = 'unajWelcomePopupShown_v1';
+
+    // --- Función para ABRIR el popup ---
+    // La creamos reutilizable
+    const openPopup = () => {
+        // Evita abrirlo si ya está abierto
+        if (welcomePopupContainer.classList.contains('active')) return; 
+
+        renderComponent(welcomePopupContainer, createWelcomePopup());
+        setTimeout(() => {
+            welcomePopupContainer.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }, 10); // Animación rápida
+    };
+
+    // --- Función para CERRAR el popup ---
+    const closePopup = () => {
+        welcomePopupContainer.classList.remove('active');
+        document.body.style.overflow = '';
+        setTimeout(() => renderComponent(welcomePopupContainer, ''), 300);
+    };
+
+    // 1. Lógica de primera visita
+    // Comprueba si ya se mostró
+    if (!localStorage.getItem(storageKey)) {
+        // Muestra el popup después de un breve delay
+        setTimeout(openPopup, 500); 
+        
+        // Registra que ya se mostró
+        localStorage.setItem(storageKey, 'true');
+    }
+
+    // 2. Lógica para cerrar el popup (con clic en overlay o botón X)
+    welcomePopupContainer.addEventListener('click', e => {
+        if (e.target.matches('.welcome-popup-overlay') || e.target.closest('.welcome-popup-close-btn')) {
+            closePopup();
+        }
+    });
+
+    // 3. Lógica para el botón de la SECCIÓN COMUNICADO
+    // Busca el botón que renderizamos en el Paso 2
+    const verComunicadoBtn = document.getElementById('ver-comunicado-btn');
+    if (verComunicadoBtn) {
+        verComunicadoBtn.addEventListener('click', (e) => {
+            e.preventDefault(); // Evita que la página salte
+            openPopup(); // Llama a la misma función de abrir popup
+        });
+    }
+}
+
 
     // --- LÓGICA DEL HEADER ---
     function setupHeaderLogic() {

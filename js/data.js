@@ -15,7 +15,8 @@ const menuItems = [
     { name: 'Modalidad', href: '#modalidades' },
     { name: 'Escuelas', href: '#carreras' },
     { name: 'Cronograma', href: '#cronograma' },
-    { name: 'Cepre', href: '#cepre' },
+    //{ name: 'Cepre', href: '#cepre' },
+    { name: 'comunicado', href: '#comunicado' },
     { name: 'Reglamento', href: '#reglamento' },
     { name: 'Contacto', href: '#contacto' },
 ];
@@ -217,7 +218,7 @@ const cepreData = {
 const reglamentoData = [
     { titulo: 'Reglamento General de Admisión', descripcion: 'Documento oficial que rige todos los procesos de admisión de la universidad.', link: '#' },
     { titulo: 'Reglamento del Centro Preuniversitario', descripcion: 'Normas y directrices específicas para los estudiantes del CEPREUNAJ.', link: '#' },
-    { titulo: 'Protocolo de Bioseguridad para Exámenes', descripcion: 'Medidas y protocolos de seguridad sanitaria durante los exámenes presenciales.', link: '#' }
+    { titulo: 'Convocatorias de Docentes', descripcion: 'Bases para concurso CEPRE  UNAJ 2026-I- segunda Fase,<br>  Ciclo: Enero febrero y marzo.', link: '#' }
 ];
 
 

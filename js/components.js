@@ -509,3 +509,48 @@ function createPopupModal() {
 }
 
 
+function createWelcomePopup() {
+    // --- ¡IMPORTANTE! ---
+    // Reemplaza estas URLs con las rutas a tus propias imágenes
+    const imagenPrincipalSrc = 'comunicado/img.png';
+    const imagenSecundaria1Src = 'comunicado/img1.png';
+    const imagenSecundaria2Src = 'comunicado/img2.png';
+
+    // No te preocupes por el tamaño de 2509x2481, el CSS
+    // (welcome-popup-image-full) se encargará de que sea responsive.
+
+    return `
+        <div class="welcome-popup-overlay"></div>
+        <div class="welcome-popup-modal">
+            <button class="welcome-popup-close-btn" aria-label="Cerrar comunicado">&times;</button>
+            <div class="welcome-popup-content">
+                
+                <img src="${imagenPrincipalSrc}" alt="Comunicado Principal UNAJ" class="welcome-popup-image-full">
+                
+                <div class="welcome-popup-image-grid">
+                    <img src="${imagenSecundaria1Src}" alt="Comunicado secundario 1" class="welcome-popup-image-half">
+                    <img src="${imagenSecundaria2Src}" alt="Comunicado secundario 2" class="welcome-popup-image-half">
+                </div>
+
+            </div>
+        </div>
+    `;
+}
+
+function createComunicadoSection() {
+    return `
+        <div class="comunicado-content">
+            <div class="comunicado-icon">
+                ${icons.Award} 
+            </div>
+            <h2 class="comunicado-title">Comunicado Importante Sobre los Pagos</h2>
+            <p class="comunicado-subtitle">
+                Revisa la información más reciente sobre el proceso de admisión y nuestras actividades.
+            </p>
+            <button class="btn btn-primary" id="ver-comunicado-btn">
+                Ver Comunicado ${icons.ArrowRight}
+            </button>
+        </div>
+    `;
+}
+
