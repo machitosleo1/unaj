@@ -1710,18 +1710,30 @@ body {
     position: absolute;
     top: 10px;
     right: 15px;
-    background: none;
+    background-color: var(--red); /* Fondo gris claro, ajusta según tu variable o usa un color como #e5e7eb */
     border: none;
-    font-size: 2.5rem;
-    color: var(--gray-400);
+    border-radius: 50%; /* Hace el fondo redondo */
+    width: 50px; /* Ancho fijo para el círculo */
+    height: 50px; /* Alto fijo para el círculo */
+    font-size: 2.5rem; /* Tamaño de la "x" más pequeño para que encaje en el círculo */
+    color: var(--gray-100); /* Color de la "x" */
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Centra la "x" dentro del círculo */
     line-height: 1;
     z-index: 10;
+    transition: background-color 0.3s ease; /* Suaviza los cambios de fondo al interactuar */
+    
 }
 
 .welcome-popup-close-btn:hover {
-    color: var(--gray-900);
+    background-color: var(--gray-50); /* Fondo más oscuro al pasar el mouse */
+    color: var(--red);
+    transform: scale(0.9);
 }
+
+
 
 .welcome-popup-content {
     padding: 2.5rem;
@@ -1736,17 +1748,10 @@ body {
     margin-bottom: 1.5rem;
 }
 
-.welcome-popup-image-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr; /* Dos columnas */
-    gap: 1rem;
-}
 
-.welcome-popup-image-half {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
-}
+
+
+
 
 /* Hacemos la grilla de 2 imágenes responsive en móviles */
 @media (max-width: 768px) {

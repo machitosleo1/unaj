@@ -66,9 +66,164 @@ document.addEventListener('DOMContentLoaded', () => {
 
     setupWelcomePopup();
 
+    /**
+ * LÓGICA DEL POPUP DE BIENVENIDA (PRIMERA VISITA)
+ * Y CONEXIÓN CON EL BOTÓN DE LA SECCIÓN COMUNICADO
+ * AHORA CON GALERÍA DE IMÁGENES
+ */
+    function setupWelcomePopup() {
+        if (!welcomePopupContainer) return;
+    
+        const storageKey = 'unajWelcomePopupShown_v1';
+    
+        // --- Función para ABRIR el popup ---
+        const openPopup = () => {
+            if (welcomePopupContainer.classList.contains('active')) return; 
+    
+            // 1. Renderizar el componente
+            renderComponent(welcomePopupContainer, createWelcomePopup());
+            
+            // 2. Mostrarlo
+            setTimeout(() => {
+                welcomePopupContainer.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }, 10);
+    
+            // 3. ▼▼▼ NUEVA LÓGICA DE GALERÍA ▼▼▼
+            // Obtenemos los elementos que acabamos de renderizar
+            const mainImage = welcomePopupContainer.querySelector('#popup-main-image');
+            const thumbGrid = welcomePopupContainer.querySelector('#popup-thumb-grid');
+    
+            if (mainImage && thumbGrid) {
+                // Agregamos un listener a la grilla
+                thumbGrid.addEventListener('click', (e) => {
+                    const thumb = e.target.closest('.popup-thumb');
+                    if (!thumb) return; // No se hizo clic en una miniatura
+    
+                    // 1. Obtener la nueva URL desde 'data-src'
+                    const newSrc = thumb.dataset.src;
+    
+                    // 2. Cambiar la imagen principal
+                    mainImage.src = newSrc;
+                    
+                    // 3. Actualizar la clase 'active' en las miniaturas
+                    // Quitar 'active' de todas
+                    thumbGrid.querySelectorAll('.popup-thumb').forEach(t => t.classList.remove('active'));
+                    // Añadir 'active' solo a la que hicimos clic
+                    thumb.classList.add('active');
+                });
+            }
+            // ▲▲▲ FIN DE NUEVA LÓGICA ▲▲▲
+        };
+    
+        // --- Función para CERRAR el popup ---
+        const closePopup = () => {
+            welcomePopupContainer.classList.remove('active');
+            document.body.style.overflow = '';
+            setTimeout(() => renderComponent(welcomePopupContainer, ''), 300);
+        };
+    
+        // 1. Lógica de primera visita (Sin cambios)
+        if (!localStorage.getItem(storageKey)) {
+            setTimeout(openPopup, 500); 
+            localStorage.setItem(storageKey, 'true');
+        }
+    
+        // 2. Lógica para cerrar el popup (Sin cambios)
+        welcomePopupContainer.addEventListener('click', e => {
+            if (e.target.matches('.welcome-popup-overlay') || e.target.closest('.welcome-popup-close-btn')) {
+                closePopup();
+            }
+        });
+    
+        // 3. Lógica para el botón de la SECCIÓN COMUNICADO (Sin cambios)
+        const verComunicadoBtn = document.getElementById('ver-comunicado-btn');
+        if (verComunicadoBtn) {
+            verComunicadoBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                openPopup();
+            });
+        }
+    }
+
+// function setupWelcomePopup() {
+//     if (!welcomePopupContainer) return;
+
+//     const storageKey = 'unajWelcomePopupShown_v1';
+
+//     // --- Función para ABRIR el popup ---
+//     const openPopup = () => {
+//         if (welcomePopupContainer.classList.contains('active')) return; 
+
+//         // 1. Renderizar el componente
+//         renderComponent(welcomePopupContainer, createWelcomePopup());
+        
+//         // 2. Mostrarlo
+//         setTimeout(() => {
+//             welcomePopupContainer.classList.add('active');
+//             document.body.style.overflow = 'hidden';
+//         }, 10);
+
+//         // 3. ▼▼▼ NUEVA LÓGICA DE GALERÍA ▼▼▼
+//         // Obtenemos los elementos que acabamos de renderizar
+//         const mainImage = welcomePopupContainer.querySelector('#popup-main-image');
+//         const thumbGrid = welcomePopupContainer.querySelector('#popup-thumb-grid');
+
+//         if (mainImage && thumbGrid) {
+//             // Agregamos un listener a la grilla
+//             thumbGrid.addEventListener('click', (e) => {
+//                 const thumb = e.target.closest('.popup-thumb');
+//                 if (!thumb) return; // No se hizo clic en una miniatura
+
+//                 // 1. Obtener la nueva URL desde 'data-src'
+//                 const newSrc = thumb.dataset.src;
+
+//                 // 2. Cambiar la imagen principal
+//                 mainImage.src = newSrc;
+                
+//                 // 3. Actualizar la clase 'active' en las miniaturas
+//                 // Quitar 'active' de todas
+//                 thumbGrid.querySelectorAll('.popup-thumb').forEach(t => t.classList.remove('active'));
+//                 // Añadir 'active' solo a la que hicimos clic
+//                 thumb.classList.add('active');
+//             });
+//         }
+//         // ▲▲▲ FIN DE NUEVA LÓGICA ▲▲▲
+//     };
+
+//     // --- Función para CERRAR el popup ---
+//     const closePopup = () => {
+//         welcomePopupContainer.classList.remove('active');
+//         document.body.style.overflow = '';
+//         setTimeout(() => renderComponent(welcomePopupContainer, ''), 300);
+//     };
+
+//     // 1. Lógica de primera visita (Sin cambios)
+//     if (!localStorage.getItem(storageKey)) {
+//         setTimeout(openPopup, 500); 
+//         localStorage.setItem(storageKey, 'true');
+//     }
+
+//     // 2. Lógica para cerrar el popup (Sin cambios)
+//     welcomePopupContainer.addEventListener('click', e => {
+//         if (e.target.matches('.welcome-popup-overlay') || e.target.closest('.welcome-popup-close-btn')) {
+//             closePopup();
+//         }
+//     });
+
+//     // 3. Lógica para el botón de la SECCIÓN COMUNICADO (Sin cambios)
+//     const verComunicadoBtn = document.getElementById('ver-comunicado-btn');
+//     if (verComunicadoBtn) {
+//         verComunicadoBtn.addEventListener('click', (e) => {
+//             e.preventDefault();
+//             openPopup();
+//         });
+//     }
+// }
+
 /**
      * LÓGICA DEL POPUP DE BIENVENIDA (PRIMERA VISITA)
-     */
+     
 function setupWelcomePopup() {
     if (!welcomePopupContainer) return;
 
@@ -122,6 +277,7 @@ function setupWelcomePopup() {
     }
 }
 
+**/
 
     // --- LÓGICA DEL HEADER ---
     function setupHeaderLogic() {

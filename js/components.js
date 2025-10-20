@@ -41,11 +41,11 @@ function createHeroSection() {
                             <div class="stat-label">Escuelas Prof.</div>
                         </div>
                         <div>
-                            <div class="stat-number">3,523</div>
+                            <div class="stat-number">3,682</div>
                             <div class="stat-label">Estudiantes</div>
                         </div>
                          <div>
-                            <div class="stat-number">204</div>
+                            <div class="stat-number">205</div>
                             <div class="stat-label">Docentes</div>
                         </div>
                     </div>
@@ -99,9 +99,9 @@ function createHeader() {
                     </a>
                 </div>
                 <div class="top-bar-location">
-                    <div class="top-bar-item">
+                    <a href="https://maps.app.goo.gl/eq6hNZZyjjyEmejCA" class="top-bar-item" Target="_blank">
                         ${icons.MapPin} <span>Av. Nueva Zelandia N° 631, Juliaca</span>
-                    </div>
+                    </a>
                     <a href="login.html" target="_blank" class="top-bar-item">
                         ${icons.LogIn} <span>Intranet</span>
                     </a>
@@ -188,10 +188,13 @@ function createFooter() {
                 <div>
                     <h3 class="footer-title">Síguenos</h3>
                     <div class="footer-socials">
-                        <a href="#" class="social-link" aria-label="Facebook">${icons.Facebook}</a>
-                        <a href="#" class="social-link" aria-label="Instagram">${icons.Instagram}</a>
+                        <a href="https://www.facebook.com/direccion.admision.cepreunaj" class="social-link" aria-label="Facebook" Target="_blank">${icons.Facebook}</a>
+                       <!-- <a href="#" class="social-link" aria-label="Instagram">${icons.Tiktok}</a>
                         <a href="#" class="social-link" aria-label="Twitter">${icons.Twitter}</a>
-                    </div>
+                        -->
+
+                        </div>
+
                 </div>
             </div>
             <div class="footer-copyright">
@@ -354,7 +357,7 @@ function createCarreraCard(carrera) {
                     </div>
                 </div>
                 <div class="carrera-card-actions">
-                    <a href="#" class="btn btn-primary">Ver Malla</a>
+                    <a href="#" class="btn btn-primary">Más Información</a>
                     <a href="#" class="btn btn-secondary postular-btn-popup">Postular</a>
                 </div>
             </div>
@@ -508,7 +511,32 @@ function createPopupModal() {
     `;
 }
 
+/**
+ * Crea el HTML para el popup de bienvenida
+ * AHORA CON FUNCIONALIDAD DE GALERÍA
+ */
+function createWelcomePopup() {
+    const imagenPrincipalSrc = 'comunicado/img.png';
+    const imagenSecundaria1Src = 'comunicado/img1.png';
+    const imagenSecundaria2Src = 'comunicado/img2.png';
 
+    return `
+        <div class="welcome-popup-overlay"></div>
+        <div class="welcome-popup-modal">
+            <button class="welcome-popup-close-btn" aria-label="Cerrar comunicado">&times;</button>
+            <div class="welcome-popup-content">
+                
+                <img src="${imagenPrincipalSrc}" alt="Comunicado Principal UNAJ" class="welcome-popup-image-full">
+                
+                <img src="${imagenSecundaria1Src}" alt="Comunicado secundario 1" class="welcome-popup-image-full">
+
+                <img src="${imagenSecundaria2Src}" alt="Comunicado secundario 2" class="welcome-popup-image-full">
+                
+                </div>
+        </div>
+    `;
+}
+/*
 function createWelcomePopup() {
     // --- ¡IMPORTANTE! ---
     // Reemplaza estas URLs con las rutas a tus propias imágenes
@@ -536,7 +564,7 @@ function createWelcomePopup() {
         </div>
     `;
 }
-
+*/
 function createComunicadoSection() {
     return `
         <div class="comunicado-content">
