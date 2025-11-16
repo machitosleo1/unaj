@@ -91,7 +91,7 @@ dniForm.addEventListener('submit', (e) => {
         return response.json();
     })
     .then(data => {
-       // console.log("Respuesta de buscar.php:", data); // <-- AGREGA ESTA LÍNEA
+        console.log("Respuesta de buscar.php:", data); // <-- AGREGA ESTA LÍNEA
         // 'data' es el objeto que PHP nos envió (con datos o con error)
         if (data.error) {
             // Si PHP nos envió un error (ej. "DNI no encontrado")

@@ -1,3 +1,5 @@
+
+
 <?php
 // --- El Cerebro de la Búsqueda (Versión 2.0 - Más Robusta) ---
 
@@ -57,8 +59,8 @@ if (($handle = fopen($archivo_csv, 'r')) !== FALSE) {
                 'apellidos' => $data[1],
                 'nombres'   => $data[2],
                 'escuela'   => $data[3],
-                'proceso'   => $data[4],
-                'puntaje'   => $data[5]
+            //    'proceso'   => $data[5],
+                'puntaje'   => $data[4]
             ];
             break; // Detener el bucle
         }
