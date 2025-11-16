@@ -11,14 +11,14 @@ const heroImages = [
 
 // Estructura del menú de navegación (ACTUALIZADO)
 const menuItems = [
-    { name: 'Inicio', href: '#inicio' },
-    { name: 'Modalidad', href: '#modalidades' },
-    { name: 'Escuelas', href: '#carreras' },
-    { name: 'Cronograma', href: '#cronograma' },
-    //{ name: 'Cepre', href: '#cepre' },
-    { name: 'comunicado', href: '#comunicado' },
-    { name: 'Reglamento', href: '#reglamento' },
-    { name: 'Contacto', href: '#contacto' },
+    { name: 'Inicio', href: 'index.html#inicio' },
+    { name: 'Comunicado', href: 'index.html#comunicado' },
+    { name: 'Modalidad', href: 'index.html#modalidades' },
+    { name: 'Escuelas', href: 'index.html#carreras' },
+    { name: 'Cronograma', href: 'index.html#cronograma' },
+    // { name: 'Cepre', href: 'index.html#cepre' }, // Asegúrate de que el ID exista en index.html
+    { name: 'Reglamento', href: 'index.html#reglamento' },
+    { name: 'Contacto', href: 'index.html#contacto' },
 ];
 
 

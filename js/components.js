@@ -34,12 +34,16 @@ function createHeroSection() {
                             Ver Modalidades ${icons.ArrowRight}
                         </a>
                         <a href="#carreras" class="btn btn-secondary">Explorar Escuelas</a>
+                        <a href="simulacro.html" target="_blank" class="btn btn-primary btn-primary1 ">
+                        Consulta tu Puntaje ${icons.ArrowRight}
+                    </a>
                     </div>
                      <div class="hero-stats">
                         <div>
                             <div class="stat-number">10</div>
                             <div class="stat-label">Escuelas Prof.</div>
                         </div>
+                        
                         <div>
                             <div class="stat-number">3,682</div>
                             <div class="stat-label">Estudiantes</div>

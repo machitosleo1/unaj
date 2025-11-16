@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consulta de Resultados - Admisión UNAJ</title>
+    
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+    
+    <link rel="icon" href="img/favicon.png" type="image/png">
+</head>
+<body>
+
+    <header id="main-header" class="sticky-header">
+    </header>
+    <main>
+        <section id="simulacro" class="section">
+            <div class="container">
+                <div class="text-center">
+                    <h2 class="section-title">Consulta de Resultados </h2>
+                    <h3 class="section-subtitle">Simulacro </h3>
+                    <p class="section-subtitle">
+                        Ingresa tu número de DNI para ver el puntaje de tu último simulacro.
+                    </p>
+                </div>
+
+                <div class="simulacro-card">
+
+                    <div id="form-container">
+                        <form id="dni-form" class="simulacro-form">
+                            <label for="dni-input">Número de Documento (DNI)</label>
+                            <input type="tel" id="dni-input" class="search-input" placeholder="Escribe tu DNI..." required autocomplete="off">
+                            <div id="error-message" class="error-text"></div>
+                            <button type="submit" id="search-btn" class="btn btn-primary btn-primary1">
+                                Consultar Puntaje
+                            </button>
+                            <div id="loading-spinner" style="display:none;">Cargando...</div>
+                        </form>
+                    </div>
+
+                    <div id="results-container" style="display:none;">
+                        <h3 class="results-title">Resultados de la Consulta</h3>
+                        
+                        <table class="results-table">
+                            <tbody>
+                                <tr>
+                                    <td>DNI:</td>
+                                    <td id="result-dni"></td>
+                                </tr>
+                                <tr>
+                                    <td>Nombres:</td>
+                                    <td id="result-nombres"></td>
+                                </tr>
+                                <tr>
+                                    <td>Apellidos:</td>
+                                    <td id="result-apellidos"></td>
+                                </tr>
+                                <!-- 
+                                <tr>
+                                    <td>Escuela:</td>
+                                    <td id="result-escuela"></td>
+                                </tr> 
+                                -->
+                            
+                                <tr>
+                                    <td>Proceso:</td>
+                                    <td id="result-proceso"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <div class="score-box">
+                            <p>Tu puntaje es:</p>
+                            <h2 id="result-puntaje"></h2>
+                        </div>
+
+                        <div class="results-actions">
+                            <button id="new-search-btn" class="btn btn-secondary">Nueva Consulta</button>
+                            <button id="close-btn" class="btn">Cerrar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+
+<script src="js/data.js"></script>
+
+<script src="js/components.js"></script>
+
+<script src="js/main.js"></script>
+
+<script src="js/simulacro.js"></script>
+
+</body>
+</html>
